@@ -1,0 +1,48 @@
+﻿生成启动时间为 2018/4/26 11:19:22。
+     1>项目“I:\Code\MyCode\VerifyServer\VerifyServer\VerifyServer.vcxproj”在节点 3 上(build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(299,5): warning MSB8004: Output 目录未以斜杠结尾。此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。
+     1>InitializeBuildStatus:
+         正在创建“I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\VerifyServer.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I./omnithread /I./database /I./IOCompletePort /I./socket/tcpserver /I./socket/udpsocket /I./OpenSSL /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _WINSTATIC /D WIN32 /D __WIN32__ /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\\" /Fd"I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ClientManager.cpp Service.cpp
+         ClientManager.cpp
+         Service.cpp
+     1>Service.cpp(295): warning C4018: “<”: 有符号/无符号不匹配
+     1>Service.cpp(380): warning C4996: 'swprintf': swprintf has been changed to conform with the ISO C standard, adding an extra character count parameter. To use traditional Microsoft swprintf, set _CRT_NON_CONFORMING_SWPRINTFS.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl(85) : 参见“swprintf”的声明
+     1>Service.cpp(493): warning C4996: 'swprintf': swprintf has been changed to conform with the ISO C standard, adding an extra character count parameter. To use traditional Microsoft swprintf, set _CRT_NON_CONFORMING_SWPRINTFS.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl(85) : 参见“swprintf”的声明
+     1>Service.cpp(624): warning C4390: “;”: 找到空的受控语句；这是否是有意的?
+     1>Service.cpp(706): warning C4996: 'swprintf': swprintf has been changed to conform with the ISO C standard, adding an extra character count parameter. To use traditional Microsoft swprintf, set _CRT_NON_CONFORMING_SWPRINTFS.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl(85) : 参见“swprintf”的声明
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../bin\VerifyServer.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:./lib tcpserver.lib udpsocket.lib DataBase.lib omnithread.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBCMT.lib /MANIFEST /ManifestFile:"I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\VerifyServer.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"I:\Code\MyCode\VerifyServer\bin\VerifyServer.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\AppDataFileCopy.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\AppEntity.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\AppOperate.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\cJSON_Unicode.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\ClientManager.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\ClientSignupOperate.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\ClientUser.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\DBSqlite3Proxy.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\GlobalFunc.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\Operate.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\ServiceAppMain.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\SocketProtocol.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\stdafx.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\StringIOCompletePortOverlapped.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\ThreadSocketRecevier.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\VerifyServer.obj
+         I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\Service.obj
+         正在生成代码
+         已完成代码的生成
+         VerifyServer.vcxproj -> I:\Code\MyCode\VerifyServer\VerifyServer\../bin\VerifyServer.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"../bin\VerifyServer.exe;#1" /manifest I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\VerifyServer.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         正在删除文件“I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\VerifyServer.unsuccessfulbuild”。
+         正在对“I:\Code\MyCode\VerifyServer\VerifyServer\Release\VerifyServer\VerifyServer.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“I:\Code\MyCode\VerifyServer\VerifyServer\VerifyServer.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:07.20

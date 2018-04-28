@@ -1,0 +1,33 @@
+﻿生成启动时间为 2018/2/1 15:33:26。
+     1>项目“I:\Code\MyCode\VerifyServer\VerifyServer\VerifyServer.vcxproj”在节点 2 上(rebuild 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“Release\VerifyServer.lastbuildstate”。
+       InitializeBuildStatus:
+         正在对“Release\VerifyServer.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../omnithread /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp VerifyServer.cpp vncService.cpp
+         stdafx.cpp
+         VerifyServer.cpp
+         vncService.cpp
+     1>I:\Code\MyCode\VerifyServer\omnithread\omnithread.h(141): warning C4005: “_OMNITHREAD_NTDLL_”: 宏重定义
+                 I:\Code\MyCode\VerifyServer\omnithread\omnithread.h(97) : 参见“_OMNITHREAD_NTDLL_”的前一个定义
+     1>vncService.cpp(343): warning C4996: 'swprintf': swprintf has been changed to conform with the ISO C standard, adding an extra character count parameter. To use traditional Microsoft swprintf, set _CRT_NON_CONFORMING_SWPRINTFS.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl(85) : 参见“swprintf”的声明
+     1>vncService.cpp(456): warning C4996: 'swprintf': swprintf has been changed to conform with the ISO C standard, adding an extra character count parameter. To use traditional Microsoft swprintf, set _CRT_NON_CONFORMING_SWPRINTFS.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl(85) : 参见“swprintf”的声明
+     1>vncService.cpp(587): warning C4390: “;”: 找到空的受控语句；这是否是有意的?
+     1>vncService.cpp(669): warning C4996: 'swprintf': swprintf has been changed to conform with the ISO C standard, adding an extra character count parameter. To use traditional Microsoft swprintf, set _CRT_NON_CONFORMING_SWPRINTFS.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl(85) : 参见“swprintf”的声明
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"I:\Code\MyCode\VerifyServer\Release\VerifyServer.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\VerifyServer.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"I:\Code\MyCode\VerifyServer\Release\VerifyServer.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:\Code\MyCode\VerifyServer\Release\VerifyServer.lib" /MACHINE:X86 Release\stdafx.obj
+         Release\VerifyServer.obj
+         Release\vncService.obj
+     1>vncService.obj : error LNK2001: 无法解析的外部符号 "int __cdecl WinVNCAppMain(void)" (?WinVNCAppMain@@YAHXZ)
+     1>vncService.obj : error LNK2001: 无法解析的外部符号 "public: __thiscall omni_thread::init_t::init_t(void)" (??0init_t@omni_thread@@QAE@XZ)
+     1>vncService.obj : error LNK2001: 无法解析的外部符号 "public: static class omni_thread * __cdecl omni_thread::create(void (__cdecl*)(void *),void *,enum omni_thread::priority_t)" (?create@omni_thread@@SAPAV1@P6AXPAX@Z0W4priority_t@1@@Z)
+     1>I:\Code\MyCode\VerifyServer\Release\VerifyServer.exe : fatal error LNK1120: 3 个无法解析的外部命令
+     1>已完成生成项目“I:\Code\MyCode\VerifyServer\VerifyServer\VerifyServer.vcxproj”(rebuild 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.59
