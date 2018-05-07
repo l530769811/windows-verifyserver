@@ -6,9 +6,9 @@
 #endif //cJSON__h
 #include "stdafx.h"
 
-cJSON* CreateCommonRequestJson();
-cJSON* CreateCommonEncryptRequestJson(const MyString& strCombinaSrc);
-void DeleteCommonRequestJson(cJSON* proot);
+cJSON* CreateCommonJsonHead();
+//cJSON* CreateCommonEncryptRequestJson(const MyString& strCombinaSrc);
+void DeleteCommonJsonHead(cJSON* proot);
 
 cJSON* CreateJsonContent(cJSON *pjson);
 cJSON* WriteJsonType(cJSON *pjson, MyString strType);

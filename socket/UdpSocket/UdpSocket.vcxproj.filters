@@ -30,7 +30,7 @@
     <ClInclude Include="UDPSocket.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SocketReceiveInterface.h">
+    <ClInclude Include="UdpSocketReceiveInterface.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClCompile Include="UDPSocket.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="SocketReceiveInterface.cpp">
+    <ClCompile Include="UdpSocketReceiveInterface.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

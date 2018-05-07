@@ -14,6 +14,7 @@ CAppEntity::CAppEntity(void)
 	m_pRecevier = new CThreadSocketRecevier(this);
 	m_tcpServer.Start(m_pRecevier, ("0,0,0,0"), 8020);
 	m_pDbManager = new CDBSqlManager();
+	
 
 	m_pAppFileData = new CAppDataFileCopy(PROJECT_NAME, DATABASE_NAME);
 	mystring strname = m_pAppFileData->GetAppDataFileName();

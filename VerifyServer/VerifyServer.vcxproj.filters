@@ -108,6 +108,30 @@
     <ClInclude Include="SignupMethods.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SignupData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IdentifyCodeSignupMethods.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientVerifyNetSocketDataParse.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientVerifyData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginVerifyReponseNetSocketData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpSocketProxy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="UdpNetSocketProxy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientVerifyReponseOperater.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -177,6 +201,30 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="SignupMethods.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SignupData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IdentifyCodeSignupMethods.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientVerifyNetSocketDataParse.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientVerifyData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginVerifyReponseNetSocketData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpSocketProxy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UdpNetSocketProxy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientVerifyReponseOperater.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

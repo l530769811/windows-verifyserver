@@ -2,7 +2,7 @@
 #include "DBSqlExecOperate.h"
 
 
-CDBSqlExecOperate::CDBSqlExecOperate(const CDBSqlManager *pdbmgr,
+CDBSqlExecOperate::CDBSqlExecOperate(CDBSqlManager *pdbmgr,
 	const TCHAR *sql,
 	int (*callback)(void *data, int argc, char **argv, char **azColName), 
 	void *data)
@@ -33,7 +33,7 @@ bool CDBSqlExecOperate::_DoOperate(){
 	bool bret = false;
 	
 	if(m_pdbmgr!=0){
-		m_pdbmgr->ExecSqlInStack(this->m_sql.c_str());
+		m_pdbmgr->ExecSqlInStack(m_sql.c_str());
 	}
 
 	return bret;

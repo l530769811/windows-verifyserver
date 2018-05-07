@@ -14,9 +14,11 @@ template <typename T>
 class _COMMON_IMPORT_EXPORT_DLL_ CUseCount
 {
 public:
-	CUseCount(void);
+	CUseCount(T* pp);
 	CUseCount(const CUseCount &u);
 	~CUseCount(void);
+
+	T*  operator->(); 
 
 protected:
 	bool Only();

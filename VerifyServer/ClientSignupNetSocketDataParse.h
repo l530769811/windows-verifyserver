@@ -19,8 +19,7 @@ public:
 protected:
 	virtual bool _isType(const unsigned char* data, long len);
 	virtual bool _parseData(const unsigned char* data, long len);
-	//virtual COperater CreateOperater();
-
+	
 private:
 	MyString m_strType;
 	MyString m_strSignupSql;

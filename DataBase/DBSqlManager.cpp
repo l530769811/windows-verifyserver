@@ -17,6 +17,7 @@ CDBSqlManager::CDBSqlManager(void)
 CDBSqlManager::~CDBSqlManager(void)
 {
 	::DeleteCriticalSection(&m_criQueueLock);
+	CloseStack();
 	if (m_hEvent!=NULL && m_hEvent!=INVALID_HANDLE_VALUE)
 	{
 		::CloseHandle(m_hEvent);
@@ -51,6 +52,7 @@ unsigned int __stdcall CDBSqlManager::_SqlexecThreadProc(void * pParam)
 		::LeaveCriticalSection(&pManager->m_criQueueLock);
 
 		pManager->ExecSql(p->m_sql.c_str(), p->callback, p->m_data);
+		delete p;
 		::Sleep(100);
 		ret = 1;
 	}
@@ -64,7 +66,7 @@ int CDBSqlManager::OpenStack()
 
 	if (m_stackThread==NULL || m_stackThread==INVALID_HANDLE_VALUE)
 	{
-		m_bthreadRunning = true;
+		
 		m_stackThread = (HANDLE)_beginthreadex(NULL, 0, _SqlexecThreadProc, reinterpret_cast<void *>(this), 0, 0);
 		if (m_stackThread!=NULL && m_stackThread!=INVALID_HANDLE_VALUE)
 		{
@@ -78,6 +80,8 @@ int CDBSqlManager::OpenStack()
 		}
 	}
 
+	ret = m_bthreadRunning == true ? 0 : ret;
+
 	return ret;
 }
 
@@ -89,12 +93,12 @@ int CDBSqlManager::CloseStack()
 	{
 		::SetEvent(m_hEvent);
 		m_bthreadRunning = false;
-		::WaitForSingleObject(m_stackThread, 5000);		
+		::WaitForSingleObject(m_stackThread, 5000);	
+		::CloseHandle(m_stackThread);
+		m_stackThread = INVALID_HANDLE_VALUE;
 	}
-
-
-	::CloseHandle(m_stackThread);
-	m_stackThread = INVALID_HANDLE_VALUE;
+		
+	
 	while(m_sql_exec_queue.empty()==false)
 	{
 		CSqlExecNode*p = m_sql_exec_queue.back();
@@ -127,7 +131,7 @@ int CDBSqlManager::ExecSqlInStack(const TCHAR *sql,
 	void *data)
 {
 	int ret = -1;
-
+	OpenStack();
 	if(m_bthreadRunning == true){
 		::EnterCriticalSection(&m_criQueueLock);
 		CSqlExecNode *pnode = new CSqlExecNode(sql, callback, data);
@@ -142,6 +146,7 @@ int CDBSqlManager::ExecSqlInStack(const TCHAR *sql,
 int CDBSqlManager::ExecSqlInStack(const TCHAR *sql)
 {
 	int ret = -1;
+	OpenStack();
 	if(m_bthreadRunning == true){
 
 		::EnterCriticalSection(&m_criQueueLock);

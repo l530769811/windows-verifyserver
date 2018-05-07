@@ -1,8 +1,8 @@
 #include "StdAfx.h"
 #include "UDPSocket.h"
-#include "SocketReceiveInterface.h"
+#include "UdpSocketReceiveInterface.h"
 
-CUDPSocket::CUDPSocket(CSocketReceiveInterface *rev_interface)
+CUDPSocket::CUDPSocket(CUdpSocketReceiveInterface *rev_interface)
 {
 #ifdef WIN32
 	//windows program
@@ -102,13 +102,19 @@ bool CUDPSocket::Stop()
 	if (m_hRevThread!=NULL && m_hRevThread!=INVALID_HANDLE_VALUE)
 	{
 		::WaitForSingleObject(m_hRevThread, INFINITE);
+		m_hRevThread = INVALID_HANDLE_VALUE;
 	}
 
 
-	if(closesocket(m_sockServer) != 0)
+	if(m_sockServer!=0 && closesocket(m_sockServer) == 0)
+	{
+		m_sockServer = 0;
+	}
+	else
 	{
 		bResult = false;
 	}
+	
 
 	if(::WSACleanup() != 0)
 	{
@@ -260,7 +266,10 @@ RESULT_THREAD CUDPSocket::_RevThread(void* pParam)
 		{     
 			if (pThis->m_pRevInterface != NULL)
 			{
-				pThis->m_pRevInterface->rev_data((const unsigned char*)buffer, ret);
+				char *ip = ::inet_ntoa(pThis->m_addrRevice.sin_addr);
+				unsigned short port = pThis->m_addrRevice.sin_port;
+
+				pThis->m_pRevInterface->rev_data((const unsigned char*)buffer, ret, ip, port);
 			}
 		}	
 

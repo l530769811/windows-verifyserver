@@ -31,7 +31,7 @@ public:
 	int Unlock();
 
 	int ExecSql(const TCHAR *sql, 
-		int (*callback)(void *data, int argc, char **argv, char **azColName), 
+		int (*callback)( void *data, int argc, char **argv, char **azColName), 
 		void *data);
 	int ExecSqlInStack(const TCHAR *sql, 
 		int (*callback)(void *data, int argc, char **argv, char **azColName), 

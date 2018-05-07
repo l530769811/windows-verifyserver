@@ -57,11 +57,11 @@ using namespace std;
 #endif
 
 typedef void (*RECEVIE_FUNC)(BYTE *pbyte, int nlen);
-class CSocketReceiveInterface;
+class CUdpSocketReceiveInterface;
 class _UDPSOCKET_IMPORT_EXPORT_DLL_ CUDPSocket
 {
 public:
-	CUDPSocket(CSocketReceiveInterface *rev_interface);	
+	CUDPSocket(CUdpSocketReceiveInterface *rev_interface);	
 	~CUDPSocket(void);
 	bool Start(unsigned short usPort);
 	bool Stop();
@@ -96,7 +96,7 @@ private:
 	bool m_bStopUDPRevThread;
 	bool m_bFinishUDPSend;
 
-	CSocketReceiveInterface *m_pRevInterface;
+	CUdpSocketReceiveInterface *m_pRevInterface;
 	
 #ifdef WIN32
 	//windows program

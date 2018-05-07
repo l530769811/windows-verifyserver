@@ -10,7 +10,7 @@ class CDBSqlManager;
 class CDBSqlExecOperate : public COperater
 {
 public:
-	CDBSqlExecOperate(const CDBSqlManager *pdbmgr,
+	CDBSqlExecOperate(CDBSqlManager *pdbmgr,
 		const TCHAR *sql,
 		int (*callback)(void *data, int argc, char **argv, char **azColName), 
 		void *data);
@@ -24,7 +24,7 @@ private:
 	//virtual bool _OperateDone(void);
 
 private:
-	const CDBSqlManager *m_pdbmgr;
+	CDBSqlManager *m_pdbmgr;
 	const MyString m_sql;
 };
 

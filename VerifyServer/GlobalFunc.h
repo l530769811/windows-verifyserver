@@ -10,15 +10,12 @@
 #include "Shlwapi.h"
 #include <vector>
 #include <string>
+#include <my_assist_define.h>
 
 //#ifndef _DEFILE_STD_STRING
 //#define _DEFILE_STD_STRING
 
-#ifdef _UNICODE
-#define MyString std::wstring
-#else
-#define MyString std::string
-#endif //_UNICODE
+
 
 //#endif //_DEFILE_STD_STRING
 #define BUFSIZE 256

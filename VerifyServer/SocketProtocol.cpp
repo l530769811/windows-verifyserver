@@ -2,7 +2,7 @@
 #include "cJSON_Unicode.h"
 #include "SocketProtocol.h"
 
-cJSON* CreateCommonRequestJson()
+cJSON* CreateCommonJsonHead()
 {
 	cJSON *root = cJSON_CreateObject();
 	cJSON_AddNullToObject(root, JSON_COMMON_REQUEST_TRANSITIONID);
@@ -10,13 +10,13 @@ cJSON* CreateCommonRequestJson()
 	return root;
 }
 
-cJSON* CreateCommonEncryptRequestJson(const MyString& strCombinaSrc){
-	cJSON *root = cJSON_CreateObject();
+//cJSON* CreateCommonEncryptRequestJson(const MyString& strCombinaSrc){
+//	cJSON *root = cJSON_CreateObject();
+//
+//	return root;
+//}
 
-	return root;
-}
-
-void DeleteCommonRequestJson(cJSON* proot){
+void DeleteCommonJsonHead(cJSON* proot){
 	cJSON_Delete(proot);
 }
 

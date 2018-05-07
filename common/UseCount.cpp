@@ -1,8 +1,9 @@
 #include "UseCount.h"
 
 template <typename T>
-CUseCount<T>::CUseCount(void)
+CUseCount<T>::CUseCount(T* pp)
 	: m_pCount(new atomic_t(1))
+	, p(pp)
 {
 	ATOMIC_INIT(1);
 }
@@ -12,14 +13,14 @@ CUseCount<T>::CUseCount(const CUseCount<T> &u)
 {
 	//CLock lock(&m_lock);
 	atomic_inc(m_pCount);//(*m_pCount)++;//(*u.m_pCount) also ++;
-	
+
 }
 template <typename T>
 CUseCount<T>& CUseCount<T>::operator=(const CUseCount &u)
 {
 	//CLock lock(&m_lock);
 	//为什么不先判断是否复制同一个CUseCount?;
-	
+
 	//atomic_inc((long*)(u.m_pCount));//(*u.m_pCount)++;	
 	//atomic_dec((long*)(u.m_pCount));//--(*m_pCount);
 
@@ -40,7 +41,7 @@ CUseCount<T>& CUseCount<T>::operator=(const CUseCount &u)
 template <typename T>
 CUseCount<T>::~CUseCount(void)
 {
-	
+
 	if(Only())
 	{
 		delete p;
@@ -52,20 +53,19 @@ CUseCount<T>::~CUseCount(void)
 	{
 		delete m_pCount;
 	}
-	
+
 }
 
 template <typename T>
 bool CUseCount<T>::Only()
-{
-	
+{	
 	return (*m_pCount) == 1;
 }
 
 template <typename T>
 bool	CUseCount<T>::Reattach(const CUseCount<T>& u)
 {
-	
+
 	atomic_inc((long*)u.m_pCount);  //++(*u.m_pCount);
 	atomic_dec((long*)m_pCount);//--(*m_pCount);
 
@@ -84,13 +84,19 @@ bool	CUseCount<T>::Reattach(const CUseCount<T>& u)
 template <typename T>
 bool CUseCount<T>::Makeonly()
 {
-	
+
 	if (*m_pCount == 1)
 		return false;
-	
+
 	atomic_dec((long*)(m_pCount));//--(*m_pCount);
 	m_pCount = new atomic_t(1);
 
 	return true;
+}
+
+template <typename T>
+T* CUseCount<T>::operator->()
+{
+	return p;
 }
 
