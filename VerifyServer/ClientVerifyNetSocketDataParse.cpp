@@ -69,14 +69,11 @@ bool CClientVerifyNetSocketDataParse::_parseData(const unsigned char* data, long
 				}
 
 				TCHAR sql[MAX_PATH] = {0};
-				_stprintf(sql, MAX_PATH-1, select_Login, strUserName, strUserPassword,strUserPhone, _T(""), _T(""));
+				_stprintf(sql, MAX_PATH-1, select_Login, strUserName.c_str(), strUserPassword.c_str());
 				this->m_strSql = sql;
+				m_strUserName = strUserName;
+				m_strUserPassword = strUserPassword;
 
-				if (m_clientMgr!=0)
-				{
-					CUseCount<CClientVerifyData> data(new CClientVerifyData(strUserName, strUserPassword));
-					m_clientMgr->ClientVerify(data);
-				}
 			}
 		}
 	}
@@ -89,4 +86,9 @@ void CClientVerifyNetSocketDataParse::RefreshOperator(COperater *operate){
 		//CDBSqlExecOperate o;
 		//operate->Copy(o);
 	}
+}
+
+CClientVerifyData CClientVerifyNetSocketDataParse::GetVerifyData()
+{
+	return CClientVerifyData(m_strUserName, m_strUserPassword);
 }

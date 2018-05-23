@@ -7,12 +7,12 @@
 
 class CClientManager;
 class COperater;
-class ClientSignupNetSocketDataParse :
+class CClientSignupNetSocketDataParse :
 	public CNetSocketDataParse
 {
 public:
-	ClientSignupNetSocketDataParse(CClientManager *mgr, COperater *operate);
-	virtual ~ClientSignupNetSocketDataParse(void);
+	CClientSignupNetSocketDataParse(CClientManager *mgr);
+	virtual ~CClientSignupNetSocketDataParse(void);
 
 	virtual void RefreshOperator(COperater *operate);
 
@@ -25,7 +25,6 @@ private:
 	MyString m_strSignupSql;
 	MyString m_strIdentifyCode;
 
-	COperater *m_operator;
 	CClientManager *m_clientMgr;
 
 	static const MyString m_strRequest ;

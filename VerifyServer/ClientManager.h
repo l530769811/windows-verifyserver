@@ -14,7 +14,7 @@ class CDBSqlManager;
 class CClientVerifyData;
 class CNetSocketData;
 class CNetSocketProxy;
-class CClientVerifyReponseOperater;
+class CClientVerifyOperator;
 class CClientManager : 
 	public CUdpSocketReceiveInterface,
 	public CSocketRecevier
@@ -29,7 +29,7 @@ public:
 
 public:
 	bool ClientSignup(CUseCount<CClientSignupData> data,  CUseCount< CSignupMethods> signupMethods);
-	bool ClientVerify(CUseCount<CClientVerifyData> data);
+	bool ClientVerify(CClientVerifyData &data);
 	bool ClientReponse(CNetSocketData &data, CNetSocketProxy &proxy);
 
 	bool Open();
@@ -42,7 +42,7 @@ private:
 	CUDPSocket * m_pUdpVerify;
 	CDBSqlManager *m_db;
 	
-	CClientVerifyReponseOperater * pveryfyReponse;
+	CClientVerifyOperator * pveryfyReponse;
 };
 
 #endif //__CLIENT_MANAGER_H__

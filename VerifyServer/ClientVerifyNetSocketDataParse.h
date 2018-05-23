@@ -4,7 +4,7 @@
 #include "netsocketdataparse.h"
 #include "my_assist_define.h"
 
-
+class CClientVerifyData;
 class CClientManager;
 class CClientVerifyNetSocketDataParse :
 	public CNetSocketDataParse
@@ -12,6 +12,7 @@ class CClientVerifyNetSocketDataParse :
 public:
 	CClientVerifyNetSocketDataParse(CClientManager *clientMgr);
 	~CClientVerifyNetSocketDataParse(void);
+	CClientVerifyData GetVerifyData();
 
 public:
 	virtual void RefreshOperator(COperater *operate);
@@ -23,6 +24,8 @@ protected:
 private:
 	MyString m_strType;
 	MyString m_strSql;
+	MyString m_strUserName;
+	MyString m_strUserPassword;
 	
 	COperater *m_operator;
 	CClientManager *m_clientMgr;
