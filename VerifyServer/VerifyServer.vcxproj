@@ -97,6 +97,7 @@
     <ClInclude Include="AppEntity.h" />
     <ClInclude Include="cJSON_Unicode.h" />
     <ClInclude Include="ClientManager.h" />
+    <ClInclude Include="ClientSignupDBDoOperator.h" />
     <ClInclude Include="ClientSignupNetSocketDataParse.h" />
     <ClInclude Include="ClientVerifyData.h" />
     <ClInclude Include="ClientVerifyNetSocketDataParse.h" />
@@ -119,6 +120,7 @@
     <ClInclude Include="SearchServerNetSocketDataParse.h" />
     <ClInclude Include="SignupData.h" />
     <ClInclude Include="SignupMethods.h" />
+    <ClInclude Include="SignupReponseNetSocketData.h" />
     <ClInclude Include="SocketProtocol.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="sqlite3ext.h" />
@@ -137,6 +139,7 @@
     <ClCompile Include="AppEntity.cpp" />
     <ClCompile Include="cJSON_Unicode.cpp" />
     <ClCompile Include="ClientManager.cpp" />
+    <ClCompile Include="ClientSignupDBDoOperator.cpp" />
     <ClCompile Include="ClientSignupNetSocketDataParse.cpp" />
     <ClCompile Include="ClientVerifyData.cpp" />
     <ClCompile Include="ClientVerifyNetSocketDataParse.cpp" />
@@ -158,6 +161,7 @@
     <ClCompile Include="SearchServerNetSocketDataParse.cpp" />
     <ClCompile Include="SignupData.cpp" />
     <ClCompile Include="SignupMethods.cpp" />
+    <ClCompile Include="SignupReponseNetSocketData.cpp" />
     <ClCompile Include="SocketProtocol.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="StringIOCompletePortOverlapped.cpp" />

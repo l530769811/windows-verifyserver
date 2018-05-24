@@ -35,7 +35,8 @@ int CClientVerifyOperator::ClientVerifyCallback(void *data, int argc, char **arg
 {
 	int ret = 0;
 
-	if(data!=0 && typeid(data)==typeid(CClientVerifyOperator))
+	//char *type_name = typeid(data).name;
+	if(data!=0)
 	{
 		CClientVerifyOperator *pdata = reinterpret_cast <CClientVerifyOperator*>(data);
 		pdata->result = (argc>0);

@@ -18,6 +18,8 @@
 #include "SearchServerNetSocketData.h"
 #include "error_id_define.h"
 #include "ClientSignupNetSocketDataParse.h"
+#include "ClientSignupDBDoOperator.h"
+#include "SignupReponseNetSocketData.h"
 
 CClientManager::CClientManager(CDBSqlManager *pdb)
 	: m_pUdpVerify(NULL)
@@ -77,7 +79,13 @@ int CClientManager::rev_data(const unsigned char * data, long len, char *ip_from
 	CClientSignupNetSocketDataParse signup_parse(this);
 	if (signup_parse.ParseData(data, len) == true)
 	{
-
+		CClientSignupData signup_data = signup_parse.GetSignupData();
+		
+		int nresult = -1;
+		nresult = this->ClientSignup(signup_data, 0) == true ?  0 : SIGNUP_ERROR;
+		CSignupReponseNetSocketData socket_data(nresult);
+		CUdpNetSocketProxy proxy(this->m_pUdpVerify, str_ip, UDP_SEND_PORT);
+		this->ClientReponse(socket_data, proxy);
 	}
 
 	return nret;
@@ -95,36 +103,32 @@ void CClientManager::unconnect_coming(DWORD socketid, unsigned int nport){
 
 }
 
-bool CClientManager::ClientSignup(CUseCount<CClientSignupData> data, CUseCount< CSignupMethods> signupMethods)
+bool CClientManager::ClientSignup(CClientSignupData &data,  CSignupMethods *signupMethods)
 {
 	bool bret = false;
-	if(signupMethods->signupMethodVerify())
+	if(signupMethods!=0 &&signupMethods->signupMethodVerify())
 	{
-		MyString sql = data->ToSql();
+		MyString sql = data.ToSql();
 		if(m_db!=0)
 		{
-			m_db->ExecSqlInStack(sql.c_str());
+			CClientSignupDBDoOperator signupReponse(sql);
+			bret = signupReponse.Exec(m_db) ==0 ? true : false;			
+		}
+	}
+	else
+	{
+		MyString sql = data.ToSql();
+		if(m_db!=0)
+		{
+			CClientSignupDBDoOperator signupReponse(sql);
+			bret = signupReponse.Exec(m_db) ==0 ? true : false;
+			
 		}
 	}
 	
 	return bret;
 }
 
-//int CClientManager::ClientVerifyCallback(void *data, int argc, char **argv, char **azColName)
-//{
-//	int ret = 0;
-//
-//	if(data!=0 && typeid(data)==typeid(CClientManager))
-//	{
-//		CClientManager *pclient = reinterpret_cast <CClientManager*>(data);
-//		CLoginVerifyReponseNetSocketData data(0);
-//		CUdpNetSocketProxy proxy(pclient->m_pUdpVerify, _T(""), 000);
-//		pclient->ClientReponse(data, proxy);
-//
-//	}
-//
-//	return ret;
-//}
 
 bool CClientManager::ClientVerify(CClientVerifyData &data)
 {

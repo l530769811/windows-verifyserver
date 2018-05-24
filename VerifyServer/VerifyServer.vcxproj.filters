@@ -135,6 +135,12 @@
     <ClInclude Include="error_id_define.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ClientSignupDBDoOperator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SignupReponseNetSocketData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -231,6 +237,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ClientVerifyOperator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSignupDBDoOperator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SignupReponseNetSocketData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

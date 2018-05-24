@@ -7,7 +7,7 @@
 #include "ClientManager.h"
 #include "Operater.h"
 #include "IdentifyCodeSignupMethods.h"
-
+#include "SignupData.h"
 
 
 const MyString CClientSignupNetSocketDataParse::m_strRequest = _T("user_regist_request");
@@ -20,6 +20,11 @@ CClientSignupNetSocketDataParse::CClientSignupNetSocketDataParse(CClientManager 
 
 CClientSignupNetSocketDataParse::~CClientSignupNetSocketDataParse(void)
 {
+}
+
+CClientSignupData CClientSignupNetSocketDataParse::GetSignupData()
+{
+	return CClientSignupData(m_strUserName, m_strUserPassword, m_strUserPhone);
 }
 
 bool CClientSignupNetSocketDataParse::_isType(const unsigned char* data, long len){
@@ -82,17 +87,16 @@ bool CClientSignupNetSocketDataParse::_parseData(const unsigned char* data, long
 					strUserIdentifyCode = p->valuestring;
 				}
 
+				m_strUserName = strUserName;
+				m_strUserPassword = strUserPassword;
+				m_strUserPhone = strUserPhone;
+				m_strIdentifyCode = strUserIdentifyCode;
+
 				TCHAR sql[1024] = {0};
 				MyString str_empty;
 				_stprintf(sql, 1024-1, insert_clientuser_data, strUserName.c_str(), strUserPassword.c_str(),strUserPhone.c_str(), str_empty.c_str(), str_empty.c_str());
-				this->m_strSignupSql = sql;
+				this->m_strSignupSql = sql;				
 				
-				if (m_clientMgr!=0)
-				{
-					CUseCount<CClientSignupData> data(new CClientSignupData(strUserName, strUserPassword, strUserPhone));
-					CUseCount<CSignupMethods> methods(new CIdentifyCodeSignupMethods());
-					m_clientMgr->ClientSignup(data, methods);
-				}
 			}
 		}
 	}

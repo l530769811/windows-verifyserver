@@ -28,7 +28,7 @@ public:
 	virtual void unconnect_coming(DWORD socketid, unsigned int nport);
 
 public:
-	bool ClientSignup(CUseCount<CClientSignupData> data,  CUseCount< CSignupMethods> signupMethods);
+	bool ClientSignup(CClientSignupData &data,  CSignupMethods *signupMethods);
 	bool ClientVerify(CClientVerifyData &data);
 	bool ClientReponse(CNetSocketData &data, CNetSocketProxy &proxy);
 

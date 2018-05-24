@@ -6,7 +6,7 @@
 #include <tchar.h>
 
 class CClientManager;
-class COperater;
+class CClientSignupData;
 class CClientSignupNetSocketDataParse :
 	public CNetSocketDataParse
 {
@@ -15,6 +15,8 @@ public:
 	virtual ~CClientSignupNetSocketDataParse(void);
 
 	virtual void RefreshOperator(COperater *operate);
+	CClientSignupData GetSignupData();
+	
 
 protected:
 	virtual bool _isType(const unsigned char* data, long len);
@@ -23,6 +25,9 @@ protected:
 private:
 	MyString m_strType;
 	MyString m_strSignupSql;
+	MyString m_strUserName;
+	MyString m_strUserPassword;
+	MyString m_strUserPhone;
 	MyString m_strIdentifyCode;
 
 	CClientManager *m_clientMgr;
