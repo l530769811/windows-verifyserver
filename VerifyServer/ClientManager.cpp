@@ -92,7 +92,7 @@ int CClientManager::rev_data(const unsigned char * data, long len, char *ip_from
 }
 
 void CClientManager::Recevie(DWORD uSokcetID, BYTE *rev_buf, UINT rev_len){
-
+	int i = 0;
 }
 
 void CClientManager::connect_coming(DWORD socketid, unsigned int nport){

@@ -117,12 +117,14 @@ BOOL CTcpServer::Start(CSocketRecevier *pReciver, const char* bind_address, cons
 	struct sockaddr_in addr;
 	ZeroMemory((char *)&addr, sizeof(addr));
 	addr.sin_family = AF_INET;
-	addr.sin_addr.s_addr = inet_addr(bind_address);	//addr.sin_addr.s_addr = htonl(INADDR_ANY);
+	addr.sin_addr.s_addr = inet_addr(bind_address);	
+	
 	addr.sin_port = htons(port);
 
 	// Bind our name to the socket
 	if (::bind(m_sockListen, (struct sockaddr *)&addr, sizeof(addr)) == SOCKET_ERROR)
 	{
+		DWORD err_code = ::GetLastError();
 		
 		closesocket(m_sockListen);
 		return FALSE;

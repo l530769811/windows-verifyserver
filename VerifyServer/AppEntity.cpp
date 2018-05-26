@@ -26,7 +26,7 @@ CAppEntity::CAppEntity(CMyServiceAppMain *pmain)
 	m_pclient_manager = new CClientManager(m_pDbManager);
 
 	m_pRecevier = new CThreadSocketRecevier(m_pclient_manager);
-	m_tcpServer.Start(m_pRecevier, ("0,0,0,0"), TCP_PORT);
+	m_tcpServer.Start(m_pRecevier, ("0.0.0.0"), TCP_PORT);
 
 	m_pDbManager->ExecSql(create_user_table);
 	m_pDbManager->ExecSql(create_user_index);
